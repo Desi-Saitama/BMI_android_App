@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -29,12 +30,14 @@ public class MainActivity extends AppCompatActivity {
         EditText edt_weight, edt_ft, edt_in;
         Button btn_cal;
         TextView txt_res;
+        LinearLayout main;
 
         edt_weight = findViewById(R.id.edt_weight);
         edt_ft = findViewById(R.id.edt_ft);
         edt_in = findViewById(R.id.edt_in);
         btn_cal = findViewById(R.id.btn_cal);
         txt_res = findViewById(R.id.txtResult);
+        main = findViewById(R.id.main);
 
         btn_cal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,13 +51,16 @@ public class MainActivity extends AppCompatActivity {
 
                  if (bmi>25){
                      txt_res.setText("You are Overweight");
+                     main.setBackgroundColor(getResources().getColor(R.color.red));
                  }
 
                  else if(bmi<18){
                      txt_res.setText("You are Underweight");
+                     main.setBackgroundColor(getResources().getColor(R.color.yellow));
                  }
                  else{
                      txt_res.setText("You are Healthy");
+                     main.setBackgroundColor(getResources().getColor(R.color.green));
                  }
             }
         });
